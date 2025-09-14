@@ -56,12 +56,12 @@ def _as_composite(obj, name=None):
     raise ValueError("plot_process needs a single process spec dict (with '_type') "
                      "or a composite {'Name': spec}. If passing a spec, also pass name=...")
 
-def plot_process(composite, filename=None, add_stores=False,
-                 plot_settings=None, name=None, **kwargs):
+def plot_process(composite, filename=None, add_stores=False, name=None,
+                 plot_settings=None, **kwargs):
     """
     composite: either {'Name': spec} OR a single spec dict (then provide name=...).
     """
-    graph = _as_composite(composite, name=name)
+    graph = _as_composite(composite, name=name or filename)
     if add_stores:
         graph = add_stores_to_dict(graph)
 
